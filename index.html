@@ -342,14 +342,19 @@
       align-items: start;
     }
 
-
     .about-portrait {
-      width: 100%;
-      aspect-ratio: 4/5;
-      background: var(--bg-3);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: var(--bg-3);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    }
+
+    .about-portrait img{
+    width:100%;
+    height:100%;
+    object-fit:contain;      /* show full body */
+    object-position:center;
     }
 
     .about-portrait-inner {
@@ -415,52 +420,54 @@
       line-height: 1.1;
     }
 
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
+    .portfolio-grid{
+    columns: 3;
+    column-gap: 24px;
+   }
 
     /* First item spans 2 columns for visual interest */
-    .portfolio-item:nth-child(1) { grid-column: span 2; }
+    
 
-    .portfolio-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      background: var(--bg-3);
-    }
+    .portfolio-item{
+    display:inline-block;
+    width:100%;
+    margin:0 0 24px;
+    break-inside:avoid;
+    background:none;
+    border-radius:0;
+    overflow:visible;
+    cursor:pointer;
+}
 
-    .portfolio-thumb {
-      width: 100%;
-      aspect-ratio: 4/3;
-      position: relative;
-      overflow: hidden;
-    }
-    .portfolio-item:nth-child(1) .portfolio-thumb { aspect-ratio: 16/9; }
+    .portfolio-thumb{
+    width:100%;
+    background:none;
+    overflow:hidden;
+}
+    
 
-    .portfolio-thumb-img {
-      width: 100%;
-      height: 100%;
-      transition: transform 0.6s var(--ease-out);
-    }
-    .portfolio-item:hover .portfolio-thumb-img { transform: scale(1.03); }
+    .portfolio-thumb-img{
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:contain;
+    transition:transform .35s ease;
+    border-radius:18px;
+}
+
+.portfolio-item:hover .portfolio-thumb-img{
+    transform:scale(1.02);
+}
 
 
-    .portfolio-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(17, 17, 16, 0.75);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 1.5rem;
-      opacity: 0;
-      transition: opacity 0.35s var(--ease-out);
-    }
-    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-
+   
+.portfolio-overlay{
+    position:static;
+    background:none;
+    padding:12px 0 0;
+    opacity:1;
+    display:block;
+}
     .portfolio-overlay-title {
       font-family: var(--font-display);
       font-size: 1.2rem;
@@ -474,35 +481,25 @@
       text-transform: uppercase;
       color: var(--text-muted);
     }
-    .portfolio-overlay-arrow {
-      position: absolute;
-      top: 1.25rem;
-      right: 1.25rem;
-      width: 32px; height: 32px;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
+.portfolio-overlay-arrow{
+    display:none;
+}
 
-    .portfolio-info {
-      padding: 1.1rem 1.25rem;
-    }
-    .portfolio-info-title {
-      font-size: 0.88rem;
-      font-weight: 400;
-      color: var(--text);
-      margin-bottom: 0.2rem;
-    }
-    .portfolio-info-cat {
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-    }
+.portfolio-info{
+    padding:14px 0 0;
+}
+
+.portfolio-info-title{
+    font-size:16px;
+    color:#fff;
+    margin-bottom:4px;
+}
+
+.portfolio-info-cat{
+    font-size:11px;
+    letter-spacing:.08em;
+    color:#777;
+}
 
     /* =============================================
        LIGHTBOX
@@ -689,25 +686,33 @@
        RESPONSIVE
     ============================================= */
     @media (max-width: 900px) {
-      .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .portfolio-grid{
+        columns:2;
+    }
       .portfolio-item:nth-child(1) { grid-column: span 2; }
       .about-grid { grid-template-columns: 1fr; }
-      .about-portrait { aspect-ratio: 3/2; max-width: 340px; }
+       .about-portrait{
+        max-width:340px;
+        margin:auto;
+        aspect-ratio:auto;
+    }
+
+    .about-portrait img{
+        height:auto;
+    }
     }
 
     @media (max-width: 640px) {
       .nav-links { display: none; }
       .nav-toggle { display: flex; }
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
-      .portfolio-item:nth-child(1) { grid-column: span 1; }
-      .portfolio-item:nth-child(1) .portfolio-thumb { aspect-ratio: 4/3; }
+      .portfolio-grid{
+        columns:1;
+    }
+      
       #hero { padding-bottom: 4rem; }
       .hero-meta { display: none; }
       .portfolio-header { flex-direction: column; align-items: flex-start; }
+      
     }
   </style>
 </head>
@@ -776,21 +781,17 @@
         <div class="about-right reveal">
           <h2 class="about-heading">Craft lives in<br /><em>the details.</em></h2>
           <p class="about-text">
-            I'm Justin — a designer and developer from Kathmandu. I care about clean
-            visual systems, purposeful interfaces, and work that communicates clearly
-            without excess. My practice sits at the intersection of graphic design and
-            frontend development, with a growing curiosity for how AI shapes the tools
-            we build with.
+            I'm Justin — a Creative Media Producer and UI/Graphic Designer based in Kathmandu, Nepal. I create clean visual identities, intuitive interfaces, and engaging digital experiences. 
+
           </p>
           <p class="about-text">
-            When I'm not designing, I'm building small software tools, reading about
-            typography, or exploring the visual culture that shapes how we see things.
-          </p>
+           When I'm not designing, you'll usually find me exploring cybersecurity concepts, building small web projects, refining my design workflow, or learning new technologies that bridge creativity and security.
           <div class="about-skills">
+            <span class="skill-tag">Cybersecurity</span>
             <span class="skill-tag">Graphic Design</span>
             <span class="skill-tag">UI Design</span>
             <span class="skill-tag">Brand Identity</span>
-            <span class="skill-tag">Typography</span>
+            <span class="skill-tag">Creative Media Production</span>
             <span class="skill-tag">Frontend Dev</span>
             <span class="skill-tag">AI &amp; Tools</span>
           </div>
@@ -828,10 +829,10 @@
               <p class="portfolio-overlay-title">Ai &amp; Robotics change 1</p>
             </div>
           </div>
-          <div class="portfolio-info">
+          <!-- <div class="portfolio-info">
             <p class="portfolio-info-title">Ai &amp; Robotics change 1</p>
             <p class="portfolio-info-cat">Digital / Graphic Design</p>
-          </div>
+          </div> -->
         </div>
 
         <!-- Item 2 -->
@@ -847,13 +848,13 @@
               <p class="portfolio-overlay-title">Ambition Guru</p>
             </div>
           </div>
-          <div class="portfolio-info">
+          <!-- <div class="portfolio-info">
             <p class="portfolio-info-title">Ambition Guru</p>
             <p class="portfolio-info-cat">Brand / Visual Design</p>
-          </div>
+          </div> -->
         </div>
 
-        <!-- Item 3 -->
+       <!-- Item 3 
         <div class="portfolio-item reveal"
              data-title="Ghode Jatra"
              data-cat="Cultural / Graphic Design"
@@ -870,7 +871,7 @@
             <p class="portfolio-info-title">Ghode Jatra</p>
             <p class="portfolio-info-cat">Cultural / Graphic Design</p>
           </div>
-        </div>
+        </div>-->
 
         <!-- Item 4 -->
         <div class="portfolio-item reveal"
@@ -885,10 +886,10 @@
               <p class="portfolio-overlay-title">Laufey</p>
             </div>
           </div>
-          <div class="portfolio-info">
+          <!-- <div class="portfolio-info">
             <p class="portfolio-info-title">Laufey</p>
             <p class="portfolio-info-cat">Poster / Illustration</p>
-          </div>
+          </div> -->
         </div>
 
         <!-- Item 5 -->
@@ -904,10 +905,10 @@
               <p class="portfolio-overlay-title">New Year Design 11</p>
             </div>
           </div>
-          <div class="portfolio-info">
+          <!-- <div class="portfolio-info">
             <p class="portfolio-info-title">New Year Design 11</p>
             <p class="portfolio-info-cat">Seasonal / Graphic Design</p>
-          </div>
+          </div> -->
         </div>
 
         <!-- Item 6 -->
@@ -923,10 +924,29 @@
               <p class="portfolio-overlay-title">Ram Navami</p>
             </div>
           </div>
-          <div class="portfolio-info">
+          <!-- <div class="portfolio-info">
             <p class="portfolio-info-title">Ram Navami</p>
             <p class="portfolio-info-cat">Cultural / Graphic Design</p>
+          </div> -->
+        </div>
+
+        <!-- Item 7 -->
+        <div class="portfolio-item reveal"
+             data-title="Admission Open"
+             data-cat="Infographics / Graphic Design"
+             data-img="Admission Open.png">
+          <div class="portfolio-thumb">
+            <img class="portfolio-thumb-img" src="Admission Open.png" alt="Admission Open" />
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-arrow">↗</div>
+              <p class="portfolio-overlay-sub">Infographics Design</p>
+              <p class="portfolio-overlay-title">Admission Open</p>
+            </div>
           </div>
+          <!-- <div class="portfolio-info">
+            <p class="portfolio-info-title">Admission Open</p>
+            <p class="portfolio-info-cat">Infographics / Graphic Design</p>
+          </div> -->
         </div>
 
       </div>
