@@ -7,6 +7,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="shortcut icon" href="/favicon.ico">
 
   <style>
     /* =============================================
@@ -212,7 +217,30 @@
       opacity: 0.35;
       pointer-events: none;
     }
+#rightClickHint {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    color: #333;
+    font-size: 14px;
+    font-family: sans-serif;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.15);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity .25s ease, transform .25s ease;
+    z-index: 999999;
+    white-space: nowrap;
+}
 
+#rightClickHint.show {
+    opacity: 1;
+    transform: translateY(0);
+}
     /* Radial vignette */
     #hero::after {
       content: '';
@@ -1003,7 +1031,7 @@
       <a href="#hero" class="footer-back">Back to top ↑</a>
     </div>
   </footer>
-
+<div id="rightClickHint"> Hey there!</div>
   <!-- =============================================
        JAVASCRIPT
   ============================================= -->
@@ -1088,6 +1116,34 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeLightbox();
     });
+
+    <script>
+const hint = document.getElementById("rightClickHint");
+let hideTimeout;
+
+document.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+
+    // Position slightly to the right of the cursor
+    hint.style.left = `${e.clientX + 18}px`;
+    hint.style.top = `${e.clientY - 10}px`;
+
+    hint.classList.add("show");
+
+    clearTimeout(hideTimeout);
+    hideTimeout = setTimeout(() => {
+        hint.classList.remove("show");
+    }, 2500);
+});
+
+// Keep it following the cursor while visible
+document.addEventListener("mousemove", (e) => {
+    if (!hint.classList.contains("show")) return;
+
+    hint.style.left = `${e.clientX + 18}px`;
+    hint.style.top = `${e.clientY - 10}px`;
+});
+</script>
   </script>
 
 </body>
