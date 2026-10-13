@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Justin Acharya | Designer, Developer & Creative Media Producer</title>
-  <meta name="description" content="Justin Acharya is a Creative Media Producer, UI/Graphic Designer, and aspiring cybersecurity professional based in Kathmandu, Nepal.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+      <meta name="description" content="Justin Acharya is a Creative Media Producer, UI/Graphic Designer, and aspiring cybersecurity professional based in Kathmandu, Nepal.">
 <meta name="author" content="Justin Acharya">
 <link rel="canonical" href="https://justin.com.np/">
 
@@ -12,1141 +20,812 @@
 <meta property="og:description" content="Portfolio of Justin Acharya — Creative Media Producer, UI/Graphic Designer, and aspiring cybersecurity professional.">
 <meta property="og:url" content="https://justin.com.np/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://justin.com.np/IMG_9813.PNG">
+<meta property="og:image" content="https://justin.com.np/Profile.PNG">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Justin Acharya — Designer & Developer">
 <meta name="twitter:description" content="Portfolio of Justin Acharya — Designer, Developer, and Creative Media Producer.">
 <meta name="twitter:image" content="https://justin.com.np/IMG_9813.PNG">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="shortcut icon" href="/favicon.ico">
-
-  <style>
-    /* =============================================
-       CSS CUSTOM PROPERTIES — DESIGN TOKENS
-    ============================================= */
-    :root {
-      --bg:         #111110;
-      --bg-2:       #181816;
-      --bg-3:       #1f1f1d;
-      --border:     #2a2a28;
-      --text:       #e8e6e1;
-      --text-muted: #7a7873;
-      --text-dim:   #4a4946;
-      --accent:     #d4c9b8;
-      --white:      #f5f3ef;
-
-      --font-display: 'DM Serif Display', Georgia, serif;
-      --font-body:    'DM Sans', system-ui, sans-serif;
-
-      --radius-sm: 4px;
-      --radius-md: 8px;
-      --radius-lg: 16px;
-
-      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-      --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* =============================================
-       RESET & BASE
-    ============================================= */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    img { display: block; width: 100%; height: 100%; object-fit: cover; }
-    a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
-
-    /* =============================================
-       UTILITY
-    ============================================= */
-    .container {
-      width: 100%;
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .section-label {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 3rem;
-    }
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-      max-width: 60px;
-    }
-
-    /* Fade-in on scroll */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* =============================================
-       NAVIGATION
-    ============================================= */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      transition: background 0.4s var(--ease-in-out), border-color 0.4s;
-    }
-    nav.scrolled {
-      background: rgba(17, 17, 16, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    nav .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-    }
-
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      color: var(--white);
-      letter-spacing: -0.01em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-    }
-    .nav-links a {
-      font-size: 0.8rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-
-    /* Hamburger (mobile) */
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-      background: none;
-      border: none;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 22px;
-      height: 1.5px;
-      background: var(--text-muted);
-      transition: transform 0.3s, opacity 0.3s;
-    }
-    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-    .nav-toggle.open span:nth-child(2) { opacity: 0; }
-    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      top: 68px;
-      background: var(--bg);
-      z-index: 99;
-      padding: 3rem 2rem;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-size: 1.4rem;
-      font-weight: 300;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1.5rem;
-    }
-
-    /* =============================================
-       HERO
-    ============================================= */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding-bottom: 5rem;
-      padding-top: 120px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Subtle grid texture */
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity: 0.35;
-      pointer-events: none;
-    }
-#rightClickHint {
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 10px 14px;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    color: #333;
-    font-size: 14px;
-    font-family: sans-serif;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,.15);
-    pointer-events: none;
-    opacity: 0;
-    transform: translateY(5px);
-    transition: opacity .25s ease, transform .25s ease;
-    z-index: 999999;
-    white-space: nowrap;
-}
-
-#rightClickHint.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-    /* Radial vignette */
-    #hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 20% 80%, transparent 40%, var(--bg) 100%);
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-eyebrow {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      opacity: 0;
-      animation: fadeSlide 0.8s 0.2s var(--ease-out) forwards;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      width: 24px;
-      height: 1px;
-      background: var(--text-dim);
-    }
-
-    .hero-name {
-      font-family: var(--font-display);
-      font-size: clamp(3.5rem, 9vw, 8.5rem);
-      font-weight: 400;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-      opacity: 0;
-      animation: fadeSlide 0.9s 0.4s var(--ease-out) forwards;
-    }
-    .hero-name em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .hero-tagline {
-      font-size: clamp(1rem, 2.5vw, 1.5rem);
-      font-weight: 300;
-      color: var(--text-muted);
-      margin-bottom: 3.5rem;
-      opacity: 0;
-      animation: fadeSlide 0.9s 0.6s var(--ease-out) forwards;
-    }
-
-    .hero-cta {
-      opacity: 0;
-      animation: fadeSlide 0.9s 0.8s var(--ease-out) forwards;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.875rem 2rem;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 0.82rem;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-      transition: background 0.25s, border-color 0.25s, color 0.25s;
-      border-radius: var(--radius-sm);
-    }
-    .btn-primary:hover {
-      background: var(--bg-3);
-      border-color: var(--text-dim);
-      color: var(--white);
-    }
-    .btn-primary .arrow {
-      font-size: 1rem;
-      transition: transform 0.25s var(--ease-out);
-    }
-    .btn-primary:hover .arrow { transform: translateX(4px); }
-
-    .hero-meta {
-      position: absolute;
-      bottom: 2.5rem;
-      right: 0;
-      z-index: 1;
-      opacity: 0;
-      animation: fadeIn 1s 1.2s forwards;
-      text-align: right;
-    }
-    .hero-meta span {
-      display: block;
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      color: var(--text-dim);
-      text-transform: uppercase;
-    }
-
-    /* =============================================
-       DIVIDER
-    ============================================= */
-    .divider {
-      height: 1px;
-      background: var(--border);
-      width: 100%;
-    }
-
-    /* =============================================
-       ABOUT
-    ============================================= */
-    #about { padding: 7rem 0; }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.8fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .about-portrait {
-    width: 100%;
-    aspect-ratio: 4/5;
-    background: var(--bg-3);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    }
-
-    .about-portrait img{
-    width:100%;
-    height:100%;
-    object-fit:contain;      /* show full body */
-    object-position:center;
-    }
-
-    .about-portrait-inner {
-      width: 100%;
-      height: 100%;
-      background: var(--bg-3);
-    }
-
-
-    .about-heading {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 400;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: var(--white);
-      margin-bottom: 1.75rem;
-    }
-    .about-heading em { font-style: italic; color: var(--accent); }
-
-    .about-text {
-      font-size: 1rem;
-      line-height: 1.85;
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      max-width: 52ch;
-    }
-
-    .about-skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .skill-tag {
-      padding: 0.35rem 0.85rem;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-    }
-
-    /* =============================================
-       DESIGN PORTFOLIO
-    ============================================= */
-    #portfolio { padding: 6rem 0 7rem; background: var(--bg-2); }
-
-    .portfolio-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 3.5rem;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      color: var(--white);
-      line-height: 1.1;
-    }
-
-    .portfolio-grid{
-    columns: 3;
-    column-gap: 24px;
-   }
-
-    /* First item spans 2 columns for visual interest */
-    
-
-    .portfolio-item{
-    display:inline-block;
-    width:100%;
-    margin:0 0 24px;
-    break-inside:avoid;
-    background:none;
-    border-radius:0;
-    overflow:visible;
-    cursor:pointer;
-}
-
-    .portfolio-thumb{
-    width:100%;
-    background:none;
-    overflow:hidden;
-}
-    
-
-    .portfolio-thumb-img{
-    width:100%;
-    height:auto;
-    display:block;
-    object-fit:contain;
-    transition:transform .35s ease;
-    border-radius:18px;
-}
-
-.portfolio-item:hover .portfolio-thumb-img{
-    transform:scale(1.02);
-}
-
-
-   
-.portfolio-overlay{
-    position:static;
-    background:none;
-    padding:12px 0 0;
-    opacity:1;
-    display:block;
-}
-    .portfolio-overlay-title {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--white);
-      margin-bottom: 0.3rem;
-    }
-    .portfolio-overlay-sub {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-.portfolio-overlay-arrow{
-    display:none;
-}
-
-.portfolio-info{
-    padding:14px 0 0;
-}
-
-.portfolio-info-title{
-    font-size:16px;
-    color:#fff;
-    margin-bottom:4px;
-}
-
-.portfolio-info-cat{
-    font-size:11px;
-    letter-spacing:.08em;
-    color:#777;
-}
-
-    /* =============================================
-       LIGHTBOX
-    ============================================= */
-    #lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      background: rgba(10, 10, 9, 0.97);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s var(--ease-out);
-      padding: 2rem;
-    }
-    #lightbox.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .lightbox-content {
-      position: relative;
-      max-width: 880px;
-      width: 100%;
-      transform: scale(0.96);
-      transition: transform 0.35s var(--ease-out);
-    }
-    #lightbox.open .lightbox-content { transform: scale(1); }
-
-    .lightbox-image {
-      width: 100%;
-      aspect-ratio: 16/10;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-    }
-
-    .lightbox-meta {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-top: 1.5rem;
-      gap: 1rem;
-    }
-    .lightbox-title {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      color: var(--white);
-    }
-    .lightbox-cat {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-top: 0.3rem;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: -48px;
-      right: 0;
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .lightbox-close:hover { border-color: var(--text-dim); color: var(--white); }
-
-    /* =============================================
-       CONTACT
-    ============================================= */
-    #contact {
-      padding: 7rem 0;
-      background: var(--bg-2);
-      border-top: 1px solid var(--border);
-    }
-
-    .contact-inner {
-      max-width: 640px;
-    }
-
-    .contact-heading {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      font-weight: 400;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--white);
-      margin-bottom: 1.5rem;
-    }
-    .contact-heading em { font-style: italic; color: var(--accent); }
-
-    .contact-text {
-      font-size: 1rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 2.5rem;
-      max-width: 46ch;
-    }
-
-    .contact-email {
-      font-family: var(--font-display);
-      font-size: clamp(1.2rem, 2.5vw, 1.75rem);
-      color: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: border-color 0.2s, color 0.2s;
-      margin-bottom: 3rem;
-    }
-    .contact-email:hover { border-color: var(--text-muted); color: var(--accent); }
-
-    .social-links {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .social-link {
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      border-bottom: 1px solid transparent;
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .social-link:hover { color: var(--text); border-color: var(--text-dim); }
-
-    /* =============================================
-       FOOTER
-    ============================================= */
-    footer {
-      padding: 2rem 0;
-      border-top: 1px solid var(--border);
-    }
-    footer .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .footer-copy {
-      font-size: 0.72rem;
-      color: var(--text-dim);
-      letter-spacing: 0.06em;
-    }
-    .footer-back {
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: color 0.2s;
-    }
-    .footer-back:hover { color: var(--text-muted); }
-
-    /* =============================================
-       KEYFRAMES
-    ============================================= */
-    @keyframes fadeSlide {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    /* =============================================
-       RESPONSIVE
-    ============================================= */
-    @media (max-width: 900px) {
-      .portfolio-grid{
-        columns:2;
-    }
-      .portfolio-item:nth-child(1) { grid-column: span 2; }
-      .about-grid { grid-template-columns: 1fr; }
-       .about-portrait{
-        max-width:340px;
-        margin:auto;
-        aspect-ratio:auto;
-    }
-
-    .about-portrait img{
-        height:auto;
-    }
-    }
-
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .nav-toggle { display: flex; }
-      .portfolio-grid{
-        columns:1;
-    }
-      
-      #hero { padding-bottom: 4rem; }
-      .hero-meta { display: none; }
-      .portfolio-header { flex-direction: column; align-items: flex-start; }
-      
-    }
-  </style>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Justin Acharya",
-  "url": "https://justin.com.np/",
-  "jobTitle": "Designer & Developer",
-  "description": "Creative Media Producer, UI/Graphic Designer, and aspiring cybersecurity professional based in Kathmandu, Nepal.",
-  "sameAs": [
-    "https://www.linkedin.com/in/justin-acharya-a58120256/",
-    "https://github.com/Justincodess",
-    "https://www.behance.net/justinacharya2"
-  ]
-}
-</script>
-</head>
-<body>
-
-  <!-- =============================================
-       NAVIGATION
-  ============================================= -->
-  <nav id="navbar">
-    <div class="container">
-      <a href="#hero" class="nav-logo">JA</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#portfolio">Work</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Mobile menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#about"    onclick="closeMobile()">About</a>
-    <a href="#portfolio" onclick="closeMobile()">Work</a>
-    <a href="#contact"  onclick="closeMobile()">Contact</a>
-  </div>
-
-  <!-- =============================================
-       HERO
-  ============================================= -->
-  <section id="hero">
-    <div class="container hero-inner">
-      <p class="hero-eyebrow">Based in Kathmandu, Nepal</p>
-      <h1 class="hero-name">Justin<br /><em>Acharya</em></h1>
-      <p class="hero-tagline">Designer &amp; Developer</p>
-      <div class="hero-cta">
-        <a href="#portfolio" class="btn-primary">
-          View Work <span class="arrow">→</span>
-        </a>
-      </div>
-    </div>
-    <div class="container hero-meta">
-      <span>Portfolio</span>
-      <span>2025</span>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- =============================================
-       ABOUT
-  ============================================= -->
-  <section id="about">
-    <div class="container">
-      <p class="section-label reveal">About</p>
-      <div class="about-grid">
-        <div class="about-left reveal">
-          <div class="about-portrait">
-            <div class="about-portrait-inner">
-              <img src="IMG_9813.PNG" alt="Justin Acharya" style="width:100%;height:100%;object-fit:cover;display:block;" />
-            </div>
-          </div>
-        </div>
-        <div class="about-right reveal">
-          <h2 class="about-heading">Craft lives in<br /><em>the details.</em></h2>
-          <p class="about-text">
-            I'm Justin — a Creative Media Producer and UI/Graphic Designer based in Kathmandu, Nepal. I create clean visual identities, intuitive interfaces, and engaging digital experiences. 
-
-          </p>
-          <p class="about-text">
-           When I'm not designing, you'll usually find me exploring cybersecurity concepts, building small web projects, refining my design workflow, or learning new technologies that bridge creativity and security.
-          <div class="about-skills">
-            <span class="skill-tag">Cybersecurity</span>
-            <span class="skill-tag">Graphic Design</span>
-            <span class="skill-tag">UI Design</span>
-            <span class="skill-tag">Brand Identity</span>
-            <span class="skill-tag">Creative Media Production</span>
-            <span class="skill-tag">Frontend Dev</span>
-            <span class="skill-tag">AI &amp; Tools</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- =============================================
-       PORTFOLIO
-  ============================================= -->
-  <section id="portfolio">
-    <div class="container">
-      <div class="portfolio-header reveal">
-        <div>
-          <p class="section-label" style="margin-bottom:1rem;">Selected Work</p>
-          <h2 class="section-title">Design Portfolio</h2>
-        </div>
-      </div>
-
-      <div class="portfolio-grid">
-
-        <!-- Item 1 -->
-        <div class="portfolio-item reveal"
-             data-title="Ai &amp; Robotics change 1"
-             data-cat="Digital / Graphic Design"
-             data-img="Ai &amp; Robotics change 1.png">
-          <div class="portfolio-thumb">
-            <img class="portfolio-thumb-img" src="Ai &amp; Robotics change 1.png" alt="Ai &amp; Robotics change 1" />
-            <div class="portfolio-overlay">
-              <div class="portfolio-overlay-arrow">↗</div>
-              <p class="portfolio-overlay-sub">Digital Design</p>
-              <p class="portfolio-overlay-title">Ai &amp; Robotics change 1</p>
-            </div>
-          </div>
-          <!-- <div class="portfolio-info">
-            <p class="portfolio-info-title">Ai &amp; Robotics change 1</p>
-            <p class="portfolio-info-cat">Digital / Graphic Design</p>
-          </div> -->
-        </div>
-
-        <!-- Item 2 -->
-        <div class="portfolio-item reveal"
-             data-title="Ambition Guru"
-             data-cat="Brand / Visual Design"
-             data-img="Ambition Guru.png">
-          <div class="portfolio-thumb">
-            <img class="portfolio-thumb-img" src="Ambition Guru.png" alt="Ambition Guru" />
-            <div class="portfolio-overlay">
-              <div class="portfolio-overlay-arrow">↗</div>
-              <p class="portfolio-overlay-sub">Brand Design</p>
-              <p class="portfolio-overlay-title">Ambition Guru</p>
-            </div>
-          </div>
-          <!-- <div class="portfolio-info">
-            <p class="portfolio-info-title">Ambition Guru</p>
-            <p class="portfolio-info-cat">Brand / Visual Design</p>
-          </div> -->
-        </div>
-
-       <!-- Item 3 
-        <div class="portfolio-item reveal"
-             data-title="Ghode Jatra"
-             data-cat="Cultural / Graphic Design"
-             data-img="Ghode Jatra.png">
-          <div class="portfolio-thumb">
-            <img class="portfolio-thumb-img" src="Ghode Jatra.png" alt="Ghode Jatra" />
-            <div class="portfolio-overlay">
-              <div class="portfolio-overlay-arrow">↗</div>
-              <p class="portfolio-overlay-sub">Cultural Design</p>
-              <p class="portfolio-overlay-title">Ghode Jatra</p>
-            </div>
-          </div>
-          <div class="portfolio-info">
-            <p class="portfolio-info-title">Ghode Jatra</p>
-            <p class="portfolio-info-cat">Cultural / Graphic Design</p>
-          </div>
-        </div>-->
-
-        <!-- Item 4 -->
-        <div class="portfolio-item reveal"
-             data-title="Laufey"
-             data-cat="Poster / Illustration"
-             data-img="Laufey.png">
-          <div class="portfolio-thumb">
-            <img class="portfolio-thumb-img" src="Laufey.png" alt="Laufey" />
-            <div class="portfolio-overlay">
-              <div class="portfolio-overlay-arrow">↗</div>
-              <p class="portfolio-overlay-sub">Poster Design</p>
-              <p class="portfolio-overlay-title">Laufey</p>
-            </div>
-          </div>
-          <!-- <div class="portfolio-info">
-            <p class="portfolio-info-title">Laufey</p>
-            <p class="portfolio-info-cat">Poster / Illustration</p>
-          </div> -->
-        </div>
-
-        <!-- Item 5 -->
-        <div class="portfolio-item reveal"
-             data-title="New Year Design 11"
-             data-cat="Seasonal / Graphic Design"
-             data-img="New Year Design 11.png">
-          <div class="portfolio-thumb">
-            <img class="portfolio-thumb-img" src="New Year Design 11.png" alt="New Year Design 11" />
-            <div class="portfolio-overlay">
-              <div class="portfolio-overlay-arrow">↗</div>
-              <p class="portfolio-overlay-sub">Seasonal Design</p>
-              <p class="portfolio-overlay-title">New Year Design 11</p>
-            </div>
-          </div>
-          <!-- <div class="portfolio-info">
-            <p class="portfolio-info-title">New Year Design 11</p>
-            <p class="portfolio-info-cat">Seasonal / Graphic Design</p>
-          </div> -->
-        </div>
-
-        <!-- Item 6 -->
-        <div class="portfolio-item reveal"
-             data-title="Ram Navami"
-             data-cat="Cultural / Graphic Design"
-             data-img="Ram Navami.png">
-          <div class="portfolio-thumb">
-            <img class="portfolio-thumb-img" src="Ram Navami.png" alt="Ram Navami" />
-            <div class="portfolio-overlay">
-              <div class="portfolio-overlay-arrow">↗</div>
-              <p class="portfolio-overlay-sub">Cultural Design</p>
-              <p class="portfolio-overlay-title">Ram Navami</p>
-            </div>
-          </div>
-          <!-- <div class="portfolio-info">
-            <p class="portfolio-info-title">Ram Navami</p>
-            <p class="portfolio-info-cat">Cultural / Graphic Design</p>
-          </div> -->
-        </div>
-
-        <!-- Item 7 -->
-        <div class="portfolio-item reveal"
-             data-title="Admission Open"
-             data-cat="Infographics / Graphic Design"
-             data-img="Admission Open.png">
-          <div class="portfolio-thumb">
-            <img class="portfolio-thumb-img" src="Admission Open.png" alt="Admission Open" />
-            <div class="portfolio-overlay">
-              <div class="portfolio-overlay-arrow">↗</div>
-              <p class="portfolio-overlay-sub">Infographics Design</p>
-              <p class="portfolio-overlay-title">Admission Open</p>
-            </div>
-          </div>
-          <!-- <div class="portfolio-info">
-            <p class="portfolio-info-title">Admission Open</p>
-            <p class="portfolio-info-cat">Infographics / Graphic Design</p>
-          </div> -->
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       LIGHTBOX
-  ============================================= -->
-  <div id="lightbox">
-    <div class="lightbox-content">
-      <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
-      <div class="lightbox-image" id="lightboxImage"></div>
-      <div class="lightbox-meta">
-        <div>
-          <p class="lightbox-title" id="lightboxTitle"></p>
-          <p class="lightbox-cat" id="lightboxCat"></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- =============================================
-       CONTACT
-  ============================================= -->
-  <section id="contact">
-    <div class="container">
-      <div class="contact-inner">
-        <p class="section-label reveal">Contact</p>
-        <h2 class="contact-heading reveal">Let's work<br /><em>together.</em></h2>
-        <p class="contact-text reveal">
-          Open to freelance design projects, collaborations, and interesting conversations.
-          The best work starts with a simple hello.
-        </p>
-        <a href="mailto:work.justinacharya@gmail.com" class="contact-email reveal">
-          work.justinacharya@gmail.com
-        </a>
-        <div class="social-links reveal">
-          <a href="https://www.behance.net/justinacharya2" class="social-link">Behance</a>
-          <a href="https://github.com/Justincodess" class="social-link">GitHub</a>
-          <a href="https://www.linkedin.com/in/justin-acharya-a58120256/" class="social-link">LinkedIn</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       FOOTER
-  ============================================= -->
-  <footer>
-    <div class="container">
-      <p class="footer-copy">© 2026 Justin Acharya. All rights reserved.</p>
-      <a href="#hero" class="footer-back">Back to top ↑</a>
-    </div>
-  </footer>
-<div id="rightClickHint"> Hey there!</div>
-  <!-- =============================================
-       JAVASCRIPT
-  ============================================= -->
-  <script>
-    /* --- Navbar scroll effect --- */
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 30);
-    });
-
-    /* --- Mobile menu toggle --- */
-    const navToggle   = document.getElementById('navToggle');
-    const mobileMenu  = document.getElementById('mobileMenu');
-
-    navToggle.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.toggle('open');
-      navToggle.classList.toggle('open', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
-
-    function closeMobile() {
-      mobileMenu.classList.remove('open');
-      navToggle.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    /* --- Scroll reveal (IntersectionObserver) --- */
-    const revealEls = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          // Stagger siblings slightly
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, 80);
-          revealObserver.unobserve(entry.target);
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brutYellow: '#FFD600',
+                        brutBlack: '#000000',
+                        brutWhite: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
         }
-      });
-    }, { threshold: 0.12 });
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6, .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        /* Custom Brutalist Cursor */
+        .brut-cursor {
+            pointer-events: none;
+            position: fixed;
+            width: 16px;
+            height: 16px;
+            background-color: #FFD600;
+            border: 2px solid #000000;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+            display: none;
+            transition: width 0.1s ease, height 0.1s ease, background-color 0.1s ease;
+        }
+        .brut-cursor.expand {
+            width: 36px;
+            height: 36px;
+            background-color: #FFFFFF;
+        }
+        @media (min-width: 1024px) {
+            .brut-cursor {
+                display: block;
+            }
+            body, a, button, input, textarea, .interactive, .carousel-card, #gallery-grid > div {
+                cursor: none !important;
+            }
+        }
+        /* Hard Brutalist Borders and Shadows */
+        .brut-border {
+            border: 2px solid #000000;
+        }
+        .brut-shadow {
+            box-shadow: 4px 4px 0px #000000;
+        }
+        .brut-shadow-lg {
+            box-shadow: 8px 8px 0px #000000;
+        }
+        .brut-shadow-hover:hover {
+            box-shadow: 6px 6px 0px #000000;
+            transform: translate(-2px, -2px);
+        }
+        /* Hide scrollbars for clean horizontal carousel */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
 
-    revealEls.forEach(el => revealObserver.observe(el));
+        /* Scroll-triggered downward reveal for content cards */
+        .reveal-down {
+            opacity: 0;
+            transform: translateY(-28px);
+            transition: opacity 650ms ease, transform 650ms cubic-bezier(.2,.7,.2,1);
+            will-change: opacity, transform;
+        }
+        .reveal-down.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-down {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+        #carousel-track {
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scroll-behavior: auto;
+        }
+    </style>
+</head>
+<body class="bg-brutWhite text-brutBlack selection:bg-brutYellow selection:text-brutBlack">
 
-    /* --- Lightbox --- */
-    const lightbox      = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxTitle = document.getElementById('lightboxTitle');
-    const lightboxCat   = document.getElementById('lightboxCat');
-    const lightboxClose = document.getElementById('lightboxClose');
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="brut-cursor"></div>
 
-    // Map each portfolio item to image data
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    portfolioItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const title = item.dataset.title;
-        const cat   = item.dataset.cat;
-        const img   = item.dataset.img;
+    <header class="sticky top-0 z-50 bg-brutWhite brut-border border-l-0 border-r-0 border-t-0">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-end">
+            
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                <a href="#home" onclick="switchView('home');" class="hover:bg-brutYellow px-2 py-1 transition-colors uppercase tracking-wider">Home</a>
+                <a href="#about" onclick="switchView('home');" class="hover:bg-brutYellow px-2 py-1 transition-colors uppercase tracking-wider">About</a>
+                <a href="#experience" onclick="switchView('home');" class="hover:bg-brutYellow px-2 py-1 transition-colors uppercase tracking-wider">Experience</a>
+                <a href="#" onclick="switchView('designs'); return false;" class="hover:bg-brutYellow px-2 py-1 transition-colors uppercase tracking-wider">Designs</a>
+                <a href="#skills" onclick="switchView('home');" class="hover:bg-brutYellow px-2 py-1 transition-colors uppercase tracking-wider">Skills</a>
+                <a href="#contact" onclick="switchView('home');" class="hover:bg-brutYellow px-2 py-1 transition-colors uppercase tracking-wider">Contact</a>
+            </nav>
 
-        lightboxTitle.textContent = title;
-        lightboxCat.textContent   = cat;
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden brut-border p-2 bg-brutYellow brut-shadow active:translate-y-1">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
 
-        lightboxImage.innerHTML = '';
-        const imgEl = document.createElement('img');
-        imgEl.src = img;
-        imgEl.alt = title;
-        imgEl.style.cssText = 'width:100%;height:100%;object-fit:contain;display:block;';
-        lightboxImage.appendChild(imgEl);
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden brut-border border-t-2 bg-brutWhite px-6 py-4 space-y-3 font-medium text-sm">
+            <a href="#home" onclick="switchView('home'); closeMobileMenu();" class="block py-2 hover:bg-brutYellow px-2 uppercase">Home</a>
+            <a href="#about" onclick="switchView('home'); closeMobileMenu();" class="block py-2 hover:bg-brutYellow px-2 uppercase">About</a>
+            <a href="#experience" onclick="switchView('home'); closeMobileMenu();" class="block py-2 hover:bg-brutYellow px-2 uppercase">Experience</a>
+            <a href="#" onclick="switchView('designs'); closeMobileMenu(); return false;" class="block py-2 hover:bg-brutYellow px-2 uppercase">Designs</a>
+            <a href="#skills" onclick="switchView('home'); closeMobileMenu();" class="block py-2 hover:bg-brutYellow px-2 uppercase">Skills</a>
+            <a href="#contact" onclick="switchView('home'); closeMobileMenu();" class="block py-2 hover:bg-brutYellow px-2 uppercase">Contact</a>
+        </div>
+    </header>
 
-        lightbox.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      });
-    });
+    <main id="app-container">
 
-    function closeLightbox() {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+        <!-- ==================== LANDING PAGE VIEW ==================== -->
+        <div id="home-view" class="view-section">
+            
+            <section id="home" class="max-w-7xl mx-auto px-6 py-20 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-8 space-y-8">
+                    <div class="inline-block bg-brutYellow brut-border px-4 py-1.5 font-mono text-xs uppercase tracking-widest font-bold brut-shadow">
+                        Based in Lalitpur, Nepal
+                    </div>
+                    <h1 class="font-display font-bold text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-none">
+                        DESIGNING IDEAS.<br>LEARNING SYSTEMS.
+                    </h1>
+                    <p class="text-lg sm:text-xl font-normal max-w-2xl leading-relaxed">
+                        I'm Justin, a 17 y/old creative media producer, designer, and cybersecurity student from Nepal. I work across visual communication, digital experiences, and technology.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#" onclick="switchView('designs');" class="bg-brutYellow brut-border brut-shadow brut-shadow-hover px-8 py-4 font-bold text-sm uppercase tracking-wider flex items-center space-x-2 transition-all">
+                            <span>Explore My Work</span>
+                            <span class="text-lg">→</span>
+                        </a>
+                        <a href="#contact" class="bg-brutWhite brut-border brut-shadow brut-shadow-hover px-8 py-4 font-bold text-sm uppercase tracking-wider flex items-center space-x-2 transition-all">
+                            <span>Get In Touch</span>
+                            <span class="text-lg">→</span>
+                        </a>
+                    </div>
+                </div>
 
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) closeLightbox();
-    });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeLightbox();
-    });
+                <div class="lg:col-span-4">
+                    <div class="brut-border brut-shadow-lg bg-brutYellow p-6 space-y-6 rotate-1">
+                        <div class="border-b-2 border-black pb-4 flex justify-between items-center">
+                            <span class="font-mono text-xs uppercase font-bold">ID Card // 2026</span>
+                            <span class="w-3 h-3 bg-black rounded-full"></span>
+                        </div>
+                        <div class="aspect-square bg-brutWhite brut-border flex flex-col items-center justify-center p-6 text-center">
+                            <img src="Profile.PNG">
+                        </div>
+                        <p class="text-xs font-mono uppercase tracking-wide leading-relaxed">
+                            Multidisciplinary creative bridging visual design, and cybersecurity frameworks.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="brut-border border-l-0 border-r-0 bg-brutYellow py-24">
+                <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    <div class="lg:col-span-5 min-w-0 relative z-10">
+                        <span class="font-mono text-xs uppercase tracking-widest font-bold bg-white brut-border px-3 py-1">01 // About Me</span>
+                        <h2 class="font-display font-bold text-4xl sm:text-5xl mt-4 uppercase leading-tight">
+                            MULTIDISCIPLINARY CREATIVE IN TECH & DESIGN.
+                        </h2>
+                    </div>
+                    <div class="lg:col-span-7 min-w-0 space-y-6 text-lg font-normal leading-relaxed">
+                        <p class="bg-white brut-border p-6 brut-shadow">
+                            I operate at the intersection of visual communication and technology. Whether crafting high-impact graphic design systems or producing creative media, my focus remains rooted in clarity, purpose, and structural integrity.
+                        </p>
+                        <p class="bg-white brut-border p-6 brut-shadow">
+                            Based in Lalitpur, Nepal, I am actively expanding my technical foundations through computer science and cybersecurity studies, blending aesthetic rigor with analytical problem-solving.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="max-w-7xl mx-auto px-6 py-24">
+                <div class="mb-16">
+                    <span class="font-mono text-xs uppercase tracking-widest font-bold bg-brutYellow brut-border px-3 py-1">02 // Professional Background</span>
+                    <h2 class="font-display font-bold text-4xl sm:text-6xl mt-4 uppercase">EXPERIENCE & ROLES</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Dimagi Kura Card -->
+                    <div class="reveal-down brut-border brut-shadow-lg p-8 bg-white flex flex-col justify-between space-y-6">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="font-mono text-xs font-bold uppercase bg-brutYellow brut-border px-2.5 py-1">Dimagi Kura</span>
+                                <span class="font-mono text-xs font-bold">Leadership</span>
+                            </div>
+                            <h3 class="font-display font-bold text-2xl uppercase mb-1">Vice President / CTO</h3>
+                            <p class="text-sm font-mono text-gray-700 mb-6">Creative Direction & Systems</p>
+                            <p class="text-base leading-relaxed mb-6">
+                                Leading creative direction, visual design, digital presence, and website-related work. Directing internal systems, cross-functional team coordination, and foundational organizational support.
+                            </p>
+                        </div>
+                        <div class="border-t-2 border-black pt-4 flex flex-wrap gap-2">
+                            <span class="text-xs font-mono bg-gray-100 brut-border px-2 py-1">Visual Design</span>
+                            <span class="text-xs font-mono bg-gray-100 brut-border px-2 py-1">Digital Presence</span>
+                            <span class="text-xs font-mono bg-gray-100 brut-border px-2 py-1">Team Coordination</span>
+                        </div>
+                    </div>
+
+                    <!-- Whitehouse IT & Robotics Club Card -->
+                    <div class="reveal-down brut-border brut-shadow-lg p-8 bg-white flex flex-col justify-between space-y-6">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="font-mono text-xs font-bold uppercase bg-brutYellow brut-border px-2.5 py-1">Whitehouse IT & Robotics Club</span>
+                                <span class="font-mono text-xs font-bold">Organization</span>
+                            </div>
+                            <h3 class="font-display font-bold text-2xl uppercase mb-1">General Secretary</h3>
+                            <p class="text-sm font-mono text-gray-700 mb-6">Club Involvement & Leadership</p>
+                            <p class="text-base leading-relaxed mb-6">
+                                Spearheaded organizational involvement, communication initiatives, technical workshops, and club activities, fostering a collaborative ecosystem for technology and robotics enthusiasts.
+                            </p>
+                        </div>
+                        <div class="border-t-2 border-black pt-4 flex flex-wrap gap-2">
+                            <span class="text-xs font-mono bg-gray-100 brut-border px-2 py-1">Communication</span>
+                            <span class="text-xs font-mono bg-gray-100 brut-border px-2 py-1">Tech Activities</span>
+                            <span class="text-xs font-mono bg-gray-100 brut-border px-2 py-1">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="brut-border border-l-0 border-r-0 bg-brutYellow py-20">
+                <div class="max-w-7xl mx-auto px-6">
+                    <span class="font-mono text-xs uppercase tracking-widest font-bold bg-white brut-border px-3 py-1">03 // Academic Foundation</span>
+                    <h2 class="font-display font-bold text-4xl sm:text-5xl mt-4 uppercase mb-12">EDUCATION & STUDIES</h2>
+
+                    <div class="reveal-down bg-white brut-border brut-shadow-lg p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-8 space-y-4">
+                            <span class="font-mono text-xs font-bold uppercase bg-brutYellow brut-border px-3 py-1">Current Education</span>
+                            <h3 class="font-display font-bold text-3xl uppercase">Himalayan WhiteHouse International College</h3>
+                            <p class="font-mono text-sm">Tinkune, Kathmandu, Nepal</p>
+                            <p class="text-lg font-medium">Grade 12 — Science with Computer Science</p>
+                            <p class="text-base leading-relaxed text-gray-800">
+                                Relevant subjects: Physics, Chemistry, Mathematics, Computer Science, English, and Nepali. Building a strong analytical foundation with a future interest in ethical hacking and cybersecurity.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-4 brut-border p-6 bg-brutYellow text-center space-y-3">
+                            <span class="font-display font-bold text-xl uppercase block">Cybersecurity Focus</span>
+                            <p class="text-xs font-mono leading-relaxed">
+                                Actively studying ethical hacking fundamentals, system security research, and defensive architecture.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="brut-border border-l-0 border-r-0 bg-white py-24">
+                <div class="max-w-7xl mx-auto px-6">
+                    <span class="font-mono text-xs uppercase tracking-widest font-bold bg-brutYellow brut-border px-3 py-1">04 // Capabilities</span>
+                    <h2 class="font-display font-bold text-4xl sm:text-6xl mt-4 uppercase mb-16">SKILLS & EXPERTISE</h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="reveal-down bg-brutYellow brut-border brut-shadow-lg p-8 space-y-6">
+                            <div class="border-b-2 border-black pb-4">
+                                <h3 class="font-display font-bold text-2xl uppercase">Design</h3>
+                                <p class="font-mono text-xs mt-1">Visual Communication & UI</p>
+                            </div>
+                            <ul class="space-y-3 font-medium">
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Graphic Design</span>
+                                    <span class="font-mono text-xs">Primary</span>
+                                </li>
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Social Media Design</span>
+                                    <span class="font-mono text-xs">Active</span>
+                                </li>
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Visual Communication</span>
+                                    <span class="font-mono text-xs">Core</span>
+                                </li>
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Canva & Figma</span>
+                                    <span class="font-mono text-xs">Proficient</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="reveal-down bg-brutYellow brut-border brut-shadow-lg p-8 space-y-6">
+                            <div class="border-b-2 border-black pb-4">
+                                <h3 class="font-display font-bold text-2xl uppercase">Technology</h3>
+                                <p class="font-mono text-xs mt-1">Web & Programming</p>
+                            </div>
+                            <ul class="space-y-3 font-medium">
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>HTML & CSS</span>
+                                    <span class="font-mono text-xs">Intermediate</span>
+                                </li>
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>JavaScript Fundamentals</span>
+                                    <span class="font-mono text-xs">Active</span>
+                                </li>
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Python & CS</span>
+                                        <span class="font-mono text-xs">Ongoing</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="reveal-down bg-brutYellow brut-border brut-shadow-lg p-8 space-y-6">
+                            <div class="border-b-2 border-black pb-4">
+                                <h3 class="font-display font-bold text-2xl uppercase">Cybersecurity</h3>
+                                <p class="font-mono text-xs mt-1">Security & Research</p>
+                            </div>
+                            <ul class="space-y-3 font-medium">
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Cybersecurity Fundamentals</span>
+                                    <span class="font-mono text-xs">Studying</span>
+                                </li>
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Ethical Hacking Learning</span>
+                                    <span class="font-mono text-xs">Active</span>
+                                </li>
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Security Research Interests</span>
+                                    <span class="font-mono text-xs">Exploring</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="bg-brutYellow py-28 brut-border border-l-0 border-r-0">
+                <div class="max-w-7xl mx-auto px-6 text-center space-y-8">
+                    <span class="font-mono text-xs uppercase tracking-widest font-bold bg-white brut-border px-3 py-1 inline-block">05 // Connect</span>
+                    <h2 class="font-display font-bold text-5xl sm:text-7xl lg:text-8xl uppercase tracking-tight">
+                        HAVE A PROJECT IN MIND?
+                    </h2>
+                    <p class="text-xl max-w-2xl mx-auto font-medium">
+                        Interested in working together, discussing a project, or connecting? Reach out.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-6 pt-6">
+                        <a href="mailto:work.justinacharya@gmail.com" class="bg-white brut-border brut-shadow brut-shadow-hover px-8 py-4 font-bold text-sm uppercase tracking-wider transition-all">
+                            Email: work.justinacharya@gmail.com ↗
+                        </a>
+                        <a href="https://www.linkedin.com/in/justin-acharya-a58120256/" target="_blank" rel="noopener noreferrer" class="bg-white brut-border brut-shadow brut-shadow-hover px-8 py-4 font-bold text-sm uppercase tracking-wider transition-all">
+                            LinkedIn ↗
+                        </a>
+                        <a href="https://www.instagram.com/lil_bahun/" target="_blank" rel="noopener noreferrer" class="bg-white brut-border brut-shadow brut-shadow-hover px-8 py-4 font-bold text-sm uppercase tracking-wider transition-all">
+                            Instagram ↗
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
 
 
-const hint = document.getElementById("rightClickHint");
+        <!-- ==================== DEDICATED DESIGN GALLERY VIEW (/designs) ==================== -->
+        <div id="designs-view" class="view-section hidden">
+            
+            <div class="max-w-7xl mx-auto px-6 py-16">
+                <!-- Gallery Header -->
+                <div class="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                    <div>
+                        <a href="#" onclick="switchView('home'); return false;" class="font-mono text-xs uppercase font-bold bg-brutYellow brut-border px-3 py-1 inline-block mb-4 hover:bg-black hover:text-white transition-colors">
+                            ← Back to Home
+                        </a>
+                        <h1 class="font-display font-bold text-5xl sm:text-7xl uppercase">THE DESIGN ARCHIVE.</h1>
+                        <p class="text-lg font-normal mt-2 max-w-xl">
+                            A collection of visual work, experiments, and creative projects.
+                        </p>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="w-full md:w-80">
+                        <input type="text" id="gallery-search" placeholder="Search by title or tags..." oninput="filterGallery()" class="w-full brut-border px-4 py-3 bg-brutWhite font-mono text-sm focus:outline-none focus:bg-brutYellow/20 transition-colors">
+                    </div>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-3 mb-12 pb-6 border-b-2 border-black" id="category-filters">
+                    <button onclick="setCategory('All')" data-cat="All" class="filter-btn brut-border px-4 py-2 font-mono text-xs uppercase font-bold bg-brutYellow brut-shadow">All Designs</button>
+                    <button onclick="setCategory('Whitehouse Designs')" data-cat="Whitehouse Designs" class="filter-btn brut-border px-4 py-2 font-mono text-xs uppercase font-bold bg-white hover:bg-brutYellow transition-colors">Whitehouse Designs</button>
+                    <button onclick="setCategory('Dimagi Kura Designs')" data-cat="Dimagi Kura Designs" class="filter-btn brut-border px-4 py-2 font-mono text-xs uppercase font-bold bg-white hover:bg-brutYellow transition-colors">Dimagi Kura Designs</button>
+                    <button onclick="setCategory('Other / Random Designs')" data-cat="Other / Random Designs" class="filter-btn brut-border px-4 py-2 font-mono text-xs uppercase font-bold bg-white hover:bg-brutYellow transition-colors">Other / Random Designs</button>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Populated dynamically via JavaScript -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="hidden text-center py-20 brut-border bg-brutYellow my-8">
+                    <h3 class="font-display font-bold text-2xl uppercase">No designs found matching your criteria.</h3>
+                    <p class="font-mono text-sm mt-2">Try clearing your search or selecting a different category.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/80 hidden flex items-center justify-center p-4">
+        <div class="bg-brutWhite brut-border brut-shadow-lg max-w-4xl w-full max-h-[90vh] flex flex-col relative">
+            <div class="p-4 border-b-2 border-black flex justify-between items-center bg-brutYellow">
+                <span id="lightbox-title" class="font-display font-bold uppercase text-lg">Project Title</span>
+                <button onclick="closeLightbox()" class="brut-border px-3 py-1 bg-white font-mono text-xs font-bold uppercase hover:bg-black hover:text-white transition-colors">Close [ESC]</button>
+            </div>
+            <div class="p-6 overflow-y-auto flex flex-col items-center justify-center bg-gray-50">
+                <img id="lightbox-img" src="" alt="Design Preview" class="max-h-[60vh] object-contain brut-border mb-4">
+                <p id="lightbox-desc" class="text-base text-center font-normal max-w-2xl mb-4"></p>
+                <div id="lightbox-tags" class="flex flex-wrap gap-2 justify-center"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="brut-border border-l-0 border-r-0 border-b-0 py-12 bg-brutWhite">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-6">
+            <p class="font-mono text-xs uppercase font-bold">
+                © 2026 Justin Acharya. All rights reserved.
+            </p>
+            <a href="#home" onclick="switchView('home');" class="font-mono text-xs uppercase font-bold bg-brutYellow brut-border px-4 py-2 brut-shadow brut-shadow-hover">
+                Back to home ↑
+            </a>
+        </div>
+    </footer>
+<div id="rightClickHint"> Hey there!</div>
+    <script>
+        // Centralized Project Data Structure
+        const designProjects = [
+            {
+                id: 1,
+                title: "Dimagi Kura Pokhara Teaser Graphic",
+                category: "Dimagi Kura Designs",
+                date: "2026",
+                tags: ["Branding", "Visual Identity", "Typography"],
+                description: "Bold teaser banner design for Dimagi Kura featuring vibrant lake photography, caution tape graphics, and stark heavy typography.",
+                image: "DKP insta.png"
+            },
+            {
+                id: 2,
+                title: "Mental Health Day Speaker Session Poster",
+                category: "Dimagi Kura Designs",
+                date: "2026",
+                tags: ["Event Design", "Posters", "Social Media"],
+                description: "Editorial event poster designed for World Mental Health Day featuring speaker Ms. Srijana Sherchan with clear typographic hierarchy and registration QR integration.",
+                image: "OCT 10 Poster.png"
+            },
+            {
+                id: 3,
+                title: "White House Dashain Fest Event Banner",
+                category: "Whitehouse Designs",
+                date: "2026",
+                tags: ["Festive", "Posters", "Event Design"],
+                description: "Festive promotional poster for Dashain Fest, combining cultural visual elements, event schedule details, and institutional branding.",
+                image: "Dashain Fest.png"
+            },
+            {
+                id: 4,
+                title: "White House +2 Admissions Open Campaign",
+                category: "Whitehouse Designs",
+                date: "2026",
+                tags: ["Admissions", "Posters", "Social Media"],
+                description: "Clean and high-impact educational promotional poster featuring athlete photography, key entrance exam details, and quick QR registration.",
+                image: "Admission Open.png"
+            },
+            {
+                id: 5,
+                title: "Laufey Visual Typography & Artwork Concept",
+                category: "Other / Random Designs",
+                date: "2026",
+                tags: ["Typography", "Poster Design", "Music"],
+                description: "Minimalist artist feature poster utilizing stacked Kinetic-style repeated typography and music player overlay elements.",
+                image: "Laufey.png"
+            },
+            {
+                id: 6,
+                title: "Ambition Guru Entrance Prep Digital Ad",
+                category: "Other / Random Designs",
+                date: "2026",
+                tags: ["Social Media", "EdTech", "Marketing"],
+                description: "Modern promotional graphic for B.Sc. CSIT entrance preparation app featuring app preview mockup, subject tags, and feature list.",
+                image: "Ambition Guru.png"
+            }
+        ];
+
+        let currentCategory = 'All';
+
+        // Custom Cursor Movement
+        const cursor = document.getElementById('custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // View Router
+        function switchView(viewName) {
+            const homeView = document.getElementById('home-view');
+            const designsView = document.getElementById('designs-view');
+            
+            if (viewName === 'designs') {
+                homeView.classList.add('hidden');
+                designsView.classList.remove('hidden');
+                window.scrollTo(0, 0);
+                renderGallery();
+            } else {
+                designsView.classList.add('hidden');
+                homeView.classList.remove('hidden');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // Render Carousel on Landing Page
+        function renderCarousel() {
+            const track = document.getElementById('carousel-track');
+            if (!track) return;
+            track.innerHTML = '';
+            
+            const displayItems = [...designProjects, ...designProjects];
+
+            displayItems.forEach((proj, idx) => {
+                const card = document.createElement('div');
+                card.className = "carousel-card min-w-[320px] sm:min-w-[380px] bg-white brut-border brut-shadow p-6 flex flex-col justify-between flex-shrink-0 cursor-pointer group";
+                card.setAttribute('tabindex', '0');
+                card.onclick = () => openLightbox(proj);
+                card.innerHTML = `
+                    <div class="aspect-video bg-gray-100 brut-border mb-4 overflow-hidden relative">
+                        <img src="${proj.image}" alt="${proj.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div>
+                        <span class="font-mono text-xs uppercase font-bold bg-brutYellow brut-border px-2 py-0.5 inline-block mb-2">${proj.category}</span>
+                        <h3 class="font-display font-bold text-xl uppercase group-hover:underline">${proj.title}</h3>
+                        <p class="text-xs font-mono text-gray-600 mt-1">${proj.date}</p>
+                    </div>
+                `;
+                track.appendChild(card);
+            });
+
+            setupCursorInteractions();
+            initAutoScrollCarousel();
+        }
+
+        // Setup Cursor Interactions for interactive elements and design cards
+        function setupCursorInteractions() {
+            document.querySelectorAll('a, button, input, textarea, .interactive, .carousel-card, #gallery-grid > div').forEach(el => {
+                el.removeEventListener('mouseenter', expandCursor);
+                el.removeEventListener('mouseleave', shrinkCursor);
+                
+                el.addEventListener('mouseenter', expandCursor);
+                el.addEventListener('mouseleave', shrinkCursor);
+            });
+        }
+
+        function expandCursor() {
+            cursor.classList.add('expand');
+        }
+
+        function shrinkCursor() {
+            cursor.classList.remove('expand');
+        }
+
+        // Auto-Scroll Carousel Engine
+        let autoScrollAnimationFrame = null;
+        let isUserInteracting = false;
+        let autoScrollSpeed = 0.65;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        let carouselListenersAttached = false;
+
+        function initAutoScrollCarousel() {
+            const carouselTrack = document.getElementById('carousel-track');
+            const statusIndicator = document.getElementById('auto-scroll-status');
+            if (!carouselTrack) return;
+
+            if (autoScrollAnimationFrame !== null) {
+                cancelAnimationFrame(autoScrollAnimationFrame);
+                autoScrollAnimationFrame = null;
+            }
+
+            if (prefersReducedMotion.matches) {
+                return;
+            }
+
+            const step = () => {
+                const halfWidth = carouselTrack.scrollWidth / 2;
+                if (!isUserInteracting && carouselTrack.scrollWidth > carouselTrack.clientWidth && halfWidth > 0) {
+                    carouselTrack.scrollLeft += autoScrollSpeed;
+                    if (carouselTrack.scrollLeft >= halfWidth) {
+                        carouselTrack.scrollLeft -= halfWidth;
+                    }
+                }
+                autoScrollAnimationFrame = requestAnimationFrame(step);
+            };
+
+            autoScrollAnimationFrame = requestAnimationFrame(step);
+
+            if (!carouselListenersAttached) {
+                carouselTrack.addEventListener('mouseenter', () => { isUserInteracting = true; });
+                carouselTrack.addEventListener('mouseleave', () => {
+                    if (!isDown) isUserInteracting = false;
+                });
+                carouselTrack.addEventListener('touchstart', () => { isUserInteracting = true; }, { passive: true });
+                carouselTrack.addEventListener('touchend', () => {
+                    window.setTimeout(() => { if (!isDown) isUserInteracting = false; }, 1200);
+                }, { passive: true });
+                carouselTrack.addEventListener('focusin', () => { isUserInteracting = true; });
+                carouselTrack.addEventListener('focusout', () => { isUserInteracting = false; });
+                carouselListenersAttached = true;
+            }
+        }
+
+        // Horizontal Carousel Manual Controls
+        function scrollCarousel(direction) {
+            const track = document.getElementById('carousel-track');
+            if (!track) return;
+            isUserInteracting = true;
+            track.scrollBy({ left: direction * 400, behavior: 'smooth' });
+            setTimeout(() => { isUserInteracting = false; }, 3000);
+        }
+
+        // Drag to scroll carousel functionality
+        const track = document.getElementById('carousel-track');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        if (track) {
+            track.addEventListener('mousedown', (e) => {
+                isDown = true;
+                isUserInteracting = true;
+                startX = e.pageX - track.offsetLeft;
+                scrollLeft = track.scrollLeft;
+            });
+            track.addEventListener('mouseleave', () => { 
+                isDown = false; 
+                isUserInteracting = false;
+            });
+            track.addEventListener('mouseup', () => { 
+                isDown = false; 
+                setTimeout(() => { isUserInteracting = false; }, 1500);
+            });
+            track.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - track.offsetLeft;
+                const walk = (x - startX) * 2;
+                track.scrollLeft = scrollLeft - walk;
+            });
+        }
+
+        // Render Full Gallery
+        function renderGallery() {
+            const grid = document.getElementById('gallery-grid');
+            const searchInput = document.getElementById('gallery-search');
+            const emptyState = document.getElementById('empty-state');
+            
+            if (!grid) return;
+            const searchQuery = searchInput ? searchInput.value.toLowerCase() : '';
+            
+            grid.innerHTML = '';
+
+            const filtered = designProjects.filter(proj => {
+                const matchesCategory = currentCategory === 'All' || proj.category === currentCategory;
+                const matchesSearch = proj.title.toLowerCase().includes(searchQuery) || 
+                                      proj.tags.some(t => t.toLowerCase().includes(searchQuery)) ||
+                                      proj.description.toLowerCase().includes(searchQuery);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            filtered.forEach(proj => {
+                const card = document.createElement('div');
+                card.className = "bg-white brut-border brut-shadow p-6 flex flex-col justify-between group cursor-pointer hover:bg-brutYellow/5 transition-colors";
+                card.onclick = () => openLightbox(proj);
+                card.innerHTML = `
+                    <div>
+                        <div class="aspect-video bg-gray-100 brut-border mb-4 overflow-hidden">
+                            <img src="${proj.image}" alt="${proj.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="font-mono text-xs uppercase font-bold bg-brutYellow brut-border px-2 py-0.5 inline-block mb-2">${proj.category}</span>
+                        <h3 class="font-display font-bold text-2xl uppercase mb-2 group-hover:underline">${proj.title}</h3>
+                        <p class="text-sm font-normal text-gray-700 mb-4">${proj.description}</p>
+                    </div>
+                    <div class="border-t-2 border-black pt-4 flex flex-wrap gap-2 items-center justify-between">
+                        <div class="flex flex-wrap gap-1">
+                            ${proj.tags.map(t => `<span class="text-xs font-mono bg-gray-100 brut-border px-2 py-0.5">${t}</span>`).join('')}
+                        </div>
+                        <span class="font-mono text-xs font-bold">View ↗</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            setupCursorInteractions();
+        }
+
+        // Category Filter handler
+        function setCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.classList.add('bg-brutYellow', 'brut-shadow');
+                    btn.classList.remove('bg-white');
+                } else {
+                    btn.classList.remove('bg-brutYellow', 'brut-shadow');
+                    btn.classList.add('bg-white');
+                }
+            });
+            renderGallery();
+        }
+
+        function filterGallery() {
+            renderGallery();
+        }
+
+        // Lightbox Functions
+        function openLightbox(proj) {
+            document.getElementById('lightbox-title').innerText = proj.title;
+            document.getElementById('lightbox-img').src = proj.image;
+            document.getElementById('lightbox-desc').innerText = proj.description;
+            
+            const tagsContainer = document.getElementById('lightbox-tags');
+            tagsContainer.innerHTML = proj.tags.map(t => `<span class="text-xs font-mono bg-brutYellow brut-border px-3 py-1 font-bold">${t}</span>`).join('');
+            
+            document.getElementById('lightbox').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+        }
+
+        // Keyboard navigation (Escape key closes lightbox)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Reveal cards as their sections enter the viewport.
+        function initDownwardReveals() {
+            const revealItems = document.querySelectorAll('.reveal-down');
+            if (!('IntersectionObserver' in window)) {
+                revealItems.forEach(item => item.classList.add('is-visible'));
+                return;
+            }
+            const observer = new IntersectionObserver((entries, currentObserver) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        currentObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+            revealItems.forEach((item, index) => {
+                item.style.transitionDelay = `${(index % 3) * 100}ms`;
+                observer.observe(item);
+            });
+        }
+
+        // Initialize on window load
+        window.onload = function() {
+            renderCarousel();
+            initDownwardReveals();
+            setupCursorInteractions();
+        };
+   const hint = document.getElementById("rightClickHint");
 let hideTimeout;
 
 document.addEventListener("contextmenu", (e) => {
@@ -1173,8 +852,7 @@ document.addEventListener("mousemove", (e) => {
 });
 
   </script>
-
-    <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>
 
 <script>
   const lenis = new Lenis({
@@ -1190,6 +868,7 @@ document.addEventListener("mousemove", (e) => {
 
   requestAnimationFrame(raf);
 </script>
+
 
 </body>
 </html>
