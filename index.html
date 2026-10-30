@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Justin | creative media producer, UI/graphic designer</title>
@@ -20,12 +21,12 @@
 <meta property="og:description" content="Portfolio of Justin Acharya — Creative Media Producer, UI/Graphic Designer, and aspiring cybersecurity professional.">
 <meta property="og:url" content="https://justin.com.np/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://justin.com.np/Profile 1.PNG">
+<meta property="og:image" content="https://justin.com.np/Profile.PNG">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Justin Acharya — Designer & Developer">
 <meta name="twitter:description" content="Portfolio of Justin Acharya — Designer, Developer, and Creative Media Producer.">
-<meta name="twitter:image" content="https://justin.com.np/Profile 1.PNG">
+<meta name="twitter:image" content="https://justin.com.np/Profile.PNG">
     <script>
         tailwind.config = {
             theme: {
@@ -125,6 +126,32 @@
             overscroll-behavior-x: contain;
             scroll-behavior: auto;
         }
+
+        /* Right-click hint popup */
+#rightClickHint {
+    position: fixed;
+    z-index: 999999;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 2px solid #000000;
+    box-shadow: 3px 3px 0px #000000;
+    padding: 6px 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+#rightClickHint.show {
+    opacity: 1;
+    visibility: visible;
+}
     </style>
 </head>
 <body class="bg-brutWhite text-brutBlack selection:bg-brutYellow selection:text-brutBlack">
@@ -197,7 +224,7 @@
                             <span class="w-3 h-3 bg-black rounded-full"></span>
                         </div>
                         <div class="aspect-square bg-brutWhite brut-border flex flex-col items-center justify-center p-6 text-center">
-                            <img src="Profile 1.PNG">
+                            <img src="Profile.PNG">
                         </div>
                         <p class="text-xs font-mono uppercase tracking-wide leading-relaxed">
                             Multidisciplinary creative bridging visual design, and cybersecurity frameworks.
@@ -385,14 +412,14 @@
                         Interested in working together, discussing a project, or connecting? Reach out.
                     </p>
                     <div class="flex flex-wrap justify-center gap-6 pt-6">
-                        <a href="mailto:justin@dimagikura.org" class="bg-white brut-border brut-shadow brut-shadow-hover px-8 py-4 font-bold text-sm uppercase tracking-wider transition-all">
-                            Email: justin@dimagikura.org →
+                        <a href="mailto:work.justinacharya@gmail.com" class="bg-white brut-border brut-shadow brut-shadow-hover px-8 py-4 font-bold text-sm uppercase tracking-wider transition-all">
+                            Email: work.justinacharya@gmail.com ↗
                         </a>
                         <a href="https://www.linkedin.com/in/justin-acharya-a58120256/" target="_blank" rel="noopener noreferrer" class="bg-white brut-border brut-shadow brut-shadow-hover px-8 py-4 font-bold text-sm uppercase tracking-wider transition-all">
-                            LinkedIn →
+                            LinkedIn ↗
                         </a>
                         <a href="https://www.instagram.com/lil_bahun/" target="_blank" rel="noopener noreferrer" class="bg-white brut-border brut-shadow brut-shadow-hover px-8 py-4 font-bold text-sm uppercase tracking-wider transition-all">
-                            Instagram →
+                            Instagram ↗
                         </a>
                     </div>
                 </div>
@@ -428,6 +455,7 @@
                     <button onclick="setCategory('All')" data-cat="All" class="filter-btn brut-border px-4 py-2 font-mono text-xs uppercase font-bold bg-brutYellow brut-shadow">All Designs</button>
                     <button onclick="setCategory('Whitehouse Designs')" data-cat="Whitehouse Designs" class="filter-btn brut-border px-4 py-2 font-mono text-xs uppercase font-bold bg-white hover:bg-brutYellow transition-colors">Whitehouse Designs</button>
                     <button onclick="setCategory('Dimagi Kura Designs')" data-cat="Dimagi Kura Designs" class="filter-btn brut-border px-4 py-2 font-mono text-xs uppercase font-bold bg-white hover:bg-brutYellow transition-colors">Dimagi Kura Designs</button>
+                    <button onclick="setCategory('NPL Designs')" data-cat="NPL Designs" class="filter-btn brut-border px-4 py-2 font-mono text-xs uppercase font-bold bg-white hover:bg-brutYellow transition-colors">NPL Designs</button>
                     <button onclick="setCategory('Other / Random Designs')" data-cat="Other / Random Designs" class="filter-btn brut-border px-4 py-2 font-mono text-xs uppercase font-bold bg-white hover:bg-brutYellow transition-colors">Other / Random Designs</button>
                 </div>
 
@@ -471,6 +499,7 @@
             </a>
         </div>
     </footer>
+<div id="rightClickHint"> Hey there!</div>
     <script>
         // Centralized Project Data Structure
         const designProjects = [
@@ -529,14 +558,32 @@
                 image: "Ambition Guru.png"
             },
             {
-    id: 7,
-    title: "Janakpur Bolts Matchday Promo",
-    category: "Other / Random Designs",
-    date: "2026",
-    tags: ["Social Media", "Sports", "Marketing"],
-    description: "High-energy sports marketing graphic for Janakpur Bolts featuring team branding, match details, mascot celebration atop a pink team bus, and vibrant stadium atmosphere.",
-    image: "Janakpur Bolts.png"
-}
+                id: 7,
+                title: "Janakpur Bolts Matchday Promo",
+                category: "NPL Designs",
+                date: "2026",
+                tags: ["Social Media", "Sports", "Marketing"],
+                description: "High-energy sports marketing graphic for Janakpur Bolts featuring team branding, match details, mascot celebration atop a pink team bus, and vibrant stadium atmosphere.",
+                image: "Janakpur Bolts.png"
+            },
+            {
+                id: 8,
+                title: "The Final Showdown Poster",
+                category: "NPL Designs",
+                date: "2026",
+                tags: ["Social Media", "Sports", "Marketing"],
+                description: "High-stakes promotional poster for the Nepal Premier League (NPL) final match featuring the championship trophy, team branding, and mascot in a grand stadium setting.",
+                image: "The Final Show Down Poster.png"
+            },
+            {
+                id: 9,
+                title: "Pokhara Avengers Matchday Poster",
+                category: "NPL Designs",
+                date: "2026",
+                tags: ["Social Media", "Sports", "Marketing"],
+                description: "Dynamic matchday promotional poster for the Pokhara Avengers featuring flying team mascots in superhero gear overlooking a packed stadium under a starry sky.",
+                image: "Pokhara Avengers Poster.png"
+            }
         ];
 
         let currentCategory = 'All';
@@ -839,7 +886,7 @@ let hideTimeout;
 document.addEventListener("contextmenu", (e) => {
     e.preventDefault();
 
-    // Position slightly to the right of the cursor
+    // Position relative to viewport
     hint.style.left = `${e.clientX + 18}px`;
     hint.style.top = `${e.clientY - 10}px`;
 
@@ -851,12 +898,12 @@ document.addEventListener("contextmenu", (e) => {
     }, 2500);
 });
 
-// Keep it following the cursor while visible
+// Follow cursor movement while visible
 document.addEventListener("mousemove", (e) => {
-    if (!hint.classList.contains("show")) return;
-
-    hint.style.left = `${e.clientX + 18}px`;
-    hint.style.top = `${e.clientY - 10}px`;
+    if (hint.classList.contains("show")) {
+        hint.style.left = `${e.clientX + 18}px`;
+        hint.style.top = `${e.clientY - 10}px`;
+    }
 });
 
   </script>
