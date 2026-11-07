@@ -598,90 +598,109 @@
             "All": null
         };
 
-        // ==================== SMOOTH FADING AUDIO MANAGER ====================
-        let currentAudio = null;
+        // ==================== WEB AUDIO API MOBILE FADER ====================
+        let audioCtx = null;
+        let activeAudio = null;
+        let activeGainNode = null;
         let currentAudioUrl = null;
-        let isAudioEnabled = true; // Sound enabled by default
-        const FADE_DURATION = 1200; // Fade in/out duration in ms
-        const FADE_STEPS = 25;
+        let isAudioEnabled = true;
+
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                if (AudioContextClass) {
+                    audioCtx = new AudioContextClass();
+                }
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function stopSmoothTrack() {
+            if (!activeAudio || !activeGainNode || !audioCtx) {
+                if (activeAudio) {
+                    try { activeAudio.pause(); } catch(e){}
+                    activeAudio = null;
+                }
+                currentAudioUrl = null;
+                return;
+            }
+
+            const oldAudio = activeAudio;
+            const oldGain = activeGainNode;
+            activeAudio = null;
+            activeGainNode = null;
+            currentAudioUrl = null;
+
+            const now = audioCtx.currentTime;
+            oldGain.gain.setValueAtTime(oldGain.gain.value, now);
+            oldGain.gain.linearRampToValueAtTime(0.001, now + 1.0);
+
+            setTimeout(() => {
+                try {
+                    oldAudio.pause();
+                    oldAudio.currentTime = 0;
+                } catch (e) {}
+            }, 1000);
+        }
 
         function playSmoothTrack(url) {
             if (!isAudioEnabled) return;
+
             if (!url) {
                 stopSmoothTrack();
                 return;
             }
 
-            // If already playing this track, do nothing
-            if (currentAudioUrl === url && currentAudio && !currentAudio.paused) return;
+            if (currentAudioUrl === url && activeAudio && !activeAudio.paused) {
+                return;
+            }
 
-            const nextAudio = new Audio(url);
-            nextAudio.loop = true;
-            nextAudio.volume = 0;
+            const ctx = getAudioContext();
 
-            nextAudio.play().then(() => {
-                // Fade out current audio if playing
-                if (currentAudio) {
-                    const oldAudio = currentAudio;
-                    let step = 0;
-                    const volStep = oldAudio.volume / FADE_STEPS;
-                    const fadeOutInterval = setInterval(() => {
-                        step++;
-                        if (oldAudio.volume - volStep > 0) {
-                            oldAudio.volume -= volStep;
-                        } else {
-                            oldAudio.volume = 0;
-                            oldAudio.pause();
-                            oldAudio.currentTime = 0;
-                            clearInterval(fadeOutInterval);
-                        }
-                    }, FADE_DURATION / FADE_STEPS);
-                }
+            // Stop previous audio if running
+            stopSmoothTrack();
 
-                currentAudio = nextAudio;
-                currentAudioUrl = url;
+            const newAudio = new Audio(url);
+            newAudio.loop = true;
+            newAudio.crossOrigin = "anonymous";
 
-                // Fade in new audio
-                let step = 0;
-                const targetVol = 0.6;
-                const fadeInInterval = setInterval(() => {
-                    step++;
-                    if (currentAudio === nextAudio) {
-                        if (nextAudio.volume + (targetVol / FADE_STEPS) < targetVol) {
-                            nextAudio.volume += targetVol / FADE_STEPS;
-                        } else {
-                            nextAudio.volume = targetVol;
-                            clearInterval(fadeInInterval);
-                        }
-                    } else {
-                        clearInterval(fadeInInterval);
-                    }
-                }, FADE_DURATION / FADE_STEPS);
-            }).catch(err => {
-                console.log("Audio playback prevented or failed:", err);
+            if (ctx) {
+                const gainNode = ctx.createGain();
+                const source = ctx.createMediaElementSource(newAudio);
+                source.connect(gainNode);
+                gainNode.connect(ctx.destination);
+
+                const now = ctx.currentTime;
+                gainNode.gain.setValueAtTime(0.001, now);
+                gainNode.gain.linearRampToValueAtTime(0.6, now + 1.2);
+
+                activeGainNode = gainNode;
+            } else {
+                newAudio.volume = 0.6;
+            }
+
+            activeAudio = newAudio;
+            currentAudioUrl = url;
+
+            newAudio.play().catch(err => {
+                console.log("Mobile audio autoplay blocked:", err);
+                activeAudio = null;
+                currentAudioUrl = null;
             });
         }
 
-        function stopSmoothTrack() {
-            if (!currentAudio) return;
-            const oldAudio = currentAudio;
-            currentAudio = null;
-            currentAudioUrl = null;
-
-            let step = 0;
-            const volStep = oldAudio.volume / FADE_STEPS;
-            const fadeOutInterval = setInterval(() => {
-                step++;
-                if (oldAudio.volume - volStep > 0) {
-                    oldAudio.volume -= volStep;
-                } else {
-                    oldAudio.volume = 0;
-                    oldAudio.pause();
-                    oldAudio.currentTime = 0;
-                    clearInterval(fadeOutInterval);
-                }
-            }, FADE_DURATION / FADE_STEPS);
-        }
+        // Unlock Web Audio Context on first user tap/click on mobile
+        document.addEventListener('touchstart', function unlockAudio() {
+            getAudioContext();
+            document.removeEventListener('touchstart', unlockAudio);
+        }, { passive: true });
+        document.addEventListener('click', function unlockAudioClick() {
+            getAudioContext();
+            document.removeEventListener('click', unlockAudioClick);
+        });
 
         let currentCategory = 'All';
 
@@ -950,9 +969,15 @@
 
         function closeLightbox() {
             document.getElementById('lightbox').classList.add('hidden');
-            // Revert back to category audio (e.g. theme.mp3 if in NPL Designs, otherwise stop)
+            // Smoothly fade back into the active category audio or fade out
             const activeCat = currentCategory || 'All';
-            playSmoothTrack(categoryAudioMap[activeCat]);
+            const catTrack = categoryAudioMap[activeCat];
+
+            if (catTrack) {
+                playSmoothTrack(catTrack);
+            } else {
+                stopSmoothTrack();
+            }
         }
 
         // Keyboard navigation (Escape key closes lightbox)
